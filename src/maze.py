@@ -3,7 +3,7 @@ Contains the Maze class
 """
 
 import time
-from cells import Cell
+from src.cells import Cell
 
 
 class Maze:
@@ -44,6 +44,7 @@ class Maze:
 
     def _create_cells(self):
         """
+
         Creates the array of Cell objects as a list of lists for our maze and then
         draws them utilizing the _draw_cell() method.
         """
@@ -97,7 +98,7 @@ class Maze:
 
         self._cells[0][0].draw()
 
-        # The cell at the bottome right corner of the maze
+    # The cell at the bottome right corner of the maze
         self._cells[self.num_rows][self.num_cols] = Cell(
             self.cell_size_x,
             self.cell_size_y,

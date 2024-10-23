@@ -1,6 +1,6 @@
-from window import Window
-from drawing import Point, Line
-from cells import Cell
+from src.window import Window
+from src.drawing import Point, Line
+from src.cells import Cell
 
 
 def main():

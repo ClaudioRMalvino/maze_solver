@@ -9,7 +9,7 @@ of motion.
 class Cell:
 
     def __init__(self,
-                 x1, x2, y1, y2, win,
+                 x1, x2, y1, y2, win=None,
                  has_left_wall=True,
                  has_right_wall=True,
                  has_top_wall=True,
@@ -27,6 +27,17 @@ class Cell:
         self._y2 = y2
         self._win = win
 
+    def set_position(self,
+                     new_x1,
+                     new_y1,
+                     new_x2,
+                     new_y2
+                     ):
+        self._x1 = new_x1
+        self._y1 = new_y1
+        self._x2 = new_x2
+        self._y2 = new_y2
+
     def draw(self):
         """
         Draws a cell, where each wall being drawn is dependent
@@ -42,6 +53,15 @@ class Cell:
                 fill="black",
                 width=1
             )
+        else:
+            self._win.canvas.create_line(
+                self._x1,
+                self._y1,
+                self._x1,
+                self._y2,
+                fill="white",
+                width=1
+            )
 
         if self.has_right_wall:
             self._win.canvas.create_line(
@@ -52,6 +72,16 @@ class Cell:
                 fill="black",
                 width=1
             )
+        else:
+            self._win.canvas.create_line(
+                self._x2,
+                self._y1,
+                self._x2,
+                self._y2,
+                fill="white",
+                width=1
+            )
+
         if self.has_top_wall:
             self._win.canvas.create_line(
                 self._x1,
@@ -59,6 +89,15 @@ class Cell:
                 self._x2,
                 self._y2,
                 fill="black",
+                width=1
+            )
+        else:
+            self._win.canvas.create_line(
+                self._x1,
+                self._y2,
+                self._x2,
+                self._y2,
+                fill="white",
                 width=1
             )
 
@@ -69,6 +108,15 @@ class Cell:
                 self._x2,
                 self._y1,
                 fill="black",
+                width=1
+            )
+        else:
+            self._win.canvas.create_line(
+                self._x1,
+                self._y1,
+                self._x2,
+                self._y1,
+                fill="white",
                 width=1
             )
 

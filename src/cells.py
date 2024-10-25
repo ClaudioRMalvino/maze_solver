@@ -26,6 +26,7 @@ class Cell:
         self._y1 = y1
         self._y2 = y2
         self._win = win
+        self.visited = False
 
     def set_position(self,
                      new_x1,
@@ -51,7 +52,7 @@ class Cell:
                 self._x1,
                 self._y2,
                 fill="black",
-                width=1
+                width=2
             )
         else:
             self._win.canvas.create_line(
@@ -70,7 +71,7 @@ class Cell:
                 self._x2,
                 self._y2,
                 fill="black",
-                width=1
+                width=2
             )
         else:
             self._win.canvas.create_line(
@@ -89,7 +90,7 @@ class Cell:
                 self._x2,
                 self._y2,
                 fill="black",
-                width=1
+                width=2
             )
         else:
             self._win.canvas.create_line(
@@ -108,7 +109,7 @@ class Cell:
                 self._x2,
                 self._y1,
                 fill="black",
-                width=1
+                width=2
             )
         else:
             self._win.canvas.create_line(
@@ -146,7 +147,11 @@ class Cell:
             self_center[1],
             cell2_center[0],
             cell2_center[1],
-            fill="gray",
+            fill="red",
             width=2
 
         )
+
+    def __repr__(self):
+
+        return f"Top Wall: {self.has_top_wall}\nBottom Wall: {self.has_bottom_wall}\nRight Wall: {self.has_right_wall}\nLeft Wall: {self.has_left_wall}"

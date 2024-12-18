@@ -1,12 +1,43 @@
 from window import Window
+from drawing import Point, Line
+from cells import Cell
 from maze import Maze
-
+import sys
 
 def main():
+    """
+    Runs the main logic for the Maze Solver program.
+    """
+    num_rows = 12
+    num_cols = 16
+    margin = 50
+    screen_x = 800
+    screen_y = 600
+    cell_size_x = (screen_x - 2 * margin) / num_cols
+    cell_size_y = (screen_y - 2 * margin) / num_rows
 
-    win = Window(800, 600)
-    maze = Maze(0, 0, 4, 6, 30, 30, win=win)
-    maze.solve()
+    sys.setrecursionlimit(10000)
+    win = Window(screen_x, screen_y)
+
+    maze = Maze(margin, margin, num_rows, num_cols, cell_size_x, cell_size_y, win, 10)
+    print("maze created")
+    is_solvable = maze.solve()
+    
+    if not is_solvable:
+        print("maze can not be solved!")
+        win.draw_text(
+            "Maze cannot be solved :(",
+            screen_x / 2,
+            30
+        )
+    else:
+        print("maze solved!")
+        win.draw_text(
+            "Maze has been solved! :)",
+            screen_x / 2,
+            30
+        )
+
     win.wait_for_close()
 
 

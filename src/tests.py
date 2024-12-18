@@ -1,7 +1,7 @@
 import unittest
 
-from src.maze import Maze
-from src.window import Window
+from maze import Maze
+from window import Window
 
 
 class Tests(unittest.TestCase):
@@ -15,7 +15,7 @@ class Tests(unittest.TestCase):
         )
         self.assertEqual(
             len(m1._cells[0]),
-            num_rows,
+            num_rows,self.x1
         )
 
     def test_maze_break_entrance_and_exit(self):
